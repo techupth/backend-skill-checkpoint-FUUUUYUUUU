@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { client } from "./utils/db.js";
 import postRounter from "./apps/posts.js";
+import commentRounter from "./apps/comments.js";
 
 async function init() {
   await client.connect();
@@ -17,6 +18,7 @@ async function init() {
 
 
   app.use("/posts", postRounter);
+  app.use("/posts", commentRounter);
 
 
   app.get("/", (req, res) => {
